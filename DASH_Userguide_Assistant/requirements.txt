@@ -1,0 +1,12 @@
+llama-index
+llama-index-llms-groq
+docx2txt
+llama-index-embeddings-huggingface
+pypdf
+google-genai
+google-adk
+sentence-transformers
+chromadb
+pydantic
+python-dotenv
+litellm

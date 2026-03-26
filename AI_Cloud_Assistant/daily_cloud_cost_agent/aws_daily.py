@@ -32,8 +32,12 @@ df.rename(columns={df.columns[0]: "date"}, inplace=True)
 # Drop total column if exists
 df = df.drop(columns=["Total costs($)"], errors="ignore")
 
-# Convert date to datetime
-df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
+#  FIX: Handle mixed date formats safely
+df["date"] = pd.to_datetime(df["date"], format="mixed", dayfirst=True)
+
+# (Optional but recommended) Standardize format
+df["date"] = df["date"].dt.strftime("%Y-%m-%d")
+
 
 # Clean numeric columns ($, commas → float)
 for col in df.columns[1:]:
